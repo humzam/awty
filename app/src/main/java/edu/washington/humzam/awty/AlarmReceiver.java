@@ -15,5 +15,6 @@ public class AlarmReceiver extends BroadcastReceiver {
         String message = intent.getStringExtra("message");
         String phoneNum = intent.getStringExtra("phoneNum");
         Toast.makeText(context, phoneNum +" : " + message, Toast.LENGTH_LONG).show();
+        Log.i("BroadcastReceiver", "received broadcast");
     }
 }

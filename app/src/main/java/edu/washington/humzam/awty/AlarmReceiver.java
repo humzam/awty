@@ -3,6 +3,7 @@ package edu.washington.humzam.awty;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.telephony.gsm.SmsManager;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -14,7 +15,8 @@ public class AlarmReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         String message = intent.getStringExtra("message");
         String phoneNum = intent.getStringExtra("phoneNum");
-        Toast.makeText(context, phoneNum +" : " + message, Toast.LENGTH_LONG).show();
+        SmsManager smsManager = SmsManager.getDefault();
+        smsManager.sendTextMessage(phoneNum, null, message, null, null);
         Log.i("BroadcastReceiver", "received broadcast");
     }
 }
